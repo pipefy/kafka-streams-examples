@@ -1,0 +1,16 @@
+jdk: openjdk8
+
+language: scala
+
+scala:
+  - 2.12.1
+
+env:
+  global:
+    - PFY_STREAMS_PIPE_ES_APP_ENV=test
+
+before_script: cd scala/event-driven/events-to-snapshot
+script:
+  - sbt scalastyle
+  - sbt update
+  - sbt test
