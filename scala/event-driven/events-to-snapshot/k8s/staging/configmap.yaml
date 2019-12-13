@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pipefy-streams-pipe-es-configmap-staging
+data:
+  PFY_STREAMS_PIPE_ES_APP_ID: '_cr_test_pipe_events_handler'
+  PFY_STREAMS_PIPE_ES_APP_ENV: 'prod'
+  PFY_STREAMS_PIPE_ES_PIPE_EVENTS_TOPIC: '_cr_test_pipe_events'
+  PFY_STREAMS_PIPE_ES_PIPE_SNAPSHOT_STORE: '_cr_test_pipe_events_store'
+  PFY_STREAMS_PIPE_ES_KAFKA_SCHEMA_REGISTRY: 'http://pipefy-schema-registry:8081'
+  PFY_STREAMS_PIPE_ES_KAFKA_BOOTSTRAP_SERVERS: 'pipefy-kafka-bootstrap:9092'

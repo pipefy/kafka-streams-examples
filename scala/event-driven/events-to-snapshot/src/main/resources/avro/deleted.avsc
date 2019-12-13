@@ -1,0 +1,23 @@
+{
+    "type": "record",
+    "name": "PipeDeleted",
+    "version": "1",
+    "fields": [{
+            "name": "_uuid",
+            "type": "string"
+        },
+        {
+            "name": "_happened_at",
+            "type": {
+                "type": "long",
+                "logicalType": "timestamp-millis"
+            }
+        }, {
+            "name": "_user_uuid",
+            "type": "string"
+        }, {
+            "name": "_event",
+            "type": "string"
+        }
+    ]
+}

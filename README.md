@@ -1,2 +1,1 @@
-# Kafka Streams Examples
-
+# Kafka Streams Examples [![Build Status](https://travis-ci.com/pipefy/kafka-streams-examples.svg?branch=cr-master%2Fscala%2Fevent-drive%2Fevents-to-snapshot)](https://travis-ci.com/pipefy/kafka-streams-examples)
