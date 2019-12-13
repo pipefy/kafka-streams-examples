@@ -1,0 +1,53 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: pipefy-streams-pipe-es-staging
+  labels:
+    app: pipefy-streams-pipe-es-staging
+    keel.sh/policy: force
+    keel.sh/trigger: webhooks
+spec:
+  replicas: 1
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 0%
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: pipefy-streams-pipe-es-staging
+  template:
+    metadata:
+      name: pipefy-streams-pipe-es-staging
+      labels:
+        app: pipefy-streams-pipe-es-staging
+    spec:
+      containers:
+      - name: pipefy-streams-pipe-es-staging
+        image: git.pipefy.net:4567/pipefy/kafka-streams:latest
+        imagePullPolicy: Always
+        securityContext:
+          privileged: false
+        envFrom:
+        - configMapRef:
+            name: pipefy-streams-pipe-es-configmap-staging
+        - secretRef:
+            name: pfy-global-envs
+        command:
+        - java
+        args:
+        - -jar
+        - /app/pipe_events_to_snapshot_stream/com.company-assembly-1.0.jar
+        resources:
+          requests:
+            memory: 1Gi
+            cpu: 1
+          limits:
+            memory: 1Gi
+            cpu: 1
+      imagePullSecrets:
+      - name: gitlab-ee-registry
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
